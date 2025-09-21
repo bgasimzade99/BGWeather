@@ -963,41 +963,41 @@ export default function App() {
         {weather && (
           <div className="space-y-8">
             {/* Main Weather Card */}
-            <div className="bg-white/15 backdrop-blur-2xl rounded-3xl p-10 shadow-2xl border border-white/30 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-3xl transform hover:-translate-y-2">
-              <div className="flex flex-col lg:flex-row items-center justify-between mb-10">
-                <div className="text-center lg:text-left mb-8 lg:mb-0">
-                  <div className="flex items-center justify-center lg:justify-start space-x-4 mb-3">
-                    <h2 className="text-6xl font-bold text-white">
+            <div className="bg-white/15 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-2xl border border-white/30 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-3xl transform hover:-translate-y-2">
+              <div className="flex flex-col lg:flex-row items-center justify-between mb-6 sm:mb-10">
+                <div className="text-center lg:text-left mb-6 sm:mb-8 lg:mb-0">
+                  <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-2 sm:space-y-0 sm:space-x-4 mb-3">
+                    <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white text-center sm:text-left">
                       {weather.location.name === "Current Location" ? t.currentLocation : weather.location.name}
                     </h2>
                     {/* Favorite Button */}
                     <button
                       onClick={() => isFavorite(weather.location.name) ? removeFromFavorites(weather.location.name) : addToFavorites(weather.location.name)}
-                      className={`p-3 rounded-2xl transition-all duration-300 hover:scale-110 ${
+                      className={`p-2 sm:p-3 rounded-xl sm:rounded-2xl transition-all duration-300 hover:scale-110 ${
                         isFavorite(weather.location.name) 
                           ? 'bg-yellow-500 text-white shadow-lg' 
                           : 'bg-white/20 text-white/70 hover:bg-yellow-500 hover:text-white'
                       }`}
                     >
-                      <svg className="w-6 h-6" fill={isFavorite(weather.location.name) ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill={isFavorite(weather.location.name) ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                       </svg>
                     </button>
                   </div>
-                  <p className="text-white/90 text-2xl mb-3 font-medium">
+                  <p className="text-white/90 text-lg sm:text-2xl mb-3 font-medium">
                     {formatDate(new Date().toISOString().split('T')[0])}
                   </p>
-                  <p className="text-white/80 text-xl capitalize font-medium">
+                  <p className="text-white/80 text-lg sm:text-xl capitalize font-medium">
                     {getWeatherDescription(weather.current.condition.code)}
                   </p>
                 </div>
                 
-                <div className="flex items-center space-x-12">
+                <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8 lg:space-x-12">
                   <div className="text-center">
-                    <div className="text-9xl font-light text-white mb-4">
+                    <div className="text-6xl sm:text-8xl lg:text-9xl font-light text-white mb-2 sm:mb-4">
                       {Math.round(weather.current.temp_c)}°
                     </div>
-                    <div className="flex items-center justify-center space-x-6 text-white/90 text-2xl">
+                    <div className="flex items-center justify-center space-x-4 sm:space-x-6 text-white/90 text-lg sm:text-2xl">
                       <span className="font-semibold">↑ {Math.round(weather.current.temp_c + 5)}°</span>
                       <span className="font-semibold">↓ {Math.round(weather.current.temp_c - 5)}°</span>
                     </div>
@@ -1007,49 +1007,49 @@ export default function App() {
                     <img
                       src={`https:${weather.current.condition.icon}`}
                       alt={getWeatherDescription(weather.current.condition.code)}
-                      className="w-40 h-40 drop-shadow-2xl"
+                      className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 drop-shadow-2xl"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Weather Details */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-white/30">
-                <div className="text-center bg-white/15 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
-                  <div className="text-4xl font-bold text-white mb-2">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 pt-6 sm:pt-8 border-t border-white/30">
+                <div className="text-center bg-white/15 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300">
+                  <div className="text-2xl sm:text-4xl font-bold text-white mb-1 sm:mb-2">
                     {Math.round(weather.current.feelslike_c)}°
                   </div>
-                  <p className="text-white/80 text-sm font-semibold">{t.realFeel}</p>
+                  <p className="text-white/80 text-xs sm:text-sm font-semibold">{t.realFeel}</p>
                 </div>
-                <div className="text-center bg-white/15 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
-                  <div className="text-4xl font-bold text-white mb-2">
+                <div className="text-center bg-white/15 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300">
+                  <div className="text-2xl sm:text-4xl font-bold text-white mb-1 sm:mb-2">
                     {weather.current.humidity}%
                   </div>
-                  <p className="text-white/80 text-sm font-semibold">{t.humidity}</p>
+                  <p className="text-white/80 text-xs sm:text-sm font-semibold">{t.humidity}</p>
                 </div>
-                <div className="text-center bg-white/15 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
-                  <div className="text-4xl font-bold text-white mb-2">
+                <div className="text-center bg-white/15 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300">
+                  <div className="text-2xl sm:text-4xl font-bold text-white mb-1 sm:mb-2">
                     {weather.current.wind_kph}
                   </div>
-                  <p className="text-white/80 text-sm font-semibold">{t.wind} (km/h)</p>
+                  <p className="text-white/80 text-xs sm:text-sm font-semibold">{t.wind} (km/h)</p>
                 </div>
-                <div className="text-center bg-white/15 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
-                  <div className="text-4xl font-bold text-white mb-2">
+                <div className="text-center bg-white/15 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300">
+                  <div className="text-2xl sm:text-4xl font-bold text-white mb-1 sm:mb-2">
                     {weather.current.pressure_mb}
                   </div>
-                  <p className="text-white/80 text-sm font-semibold">{t.pressure} (mb)</p>
+                  <p className="text-white/80 text-xs sm:text-sm font-semibold">{t.pressure} (mb)</p>
                 </div>
               </div>
             </div>
 
             {/* Forecast Tabs */}
             {forecast && (
-              <div className="bg-white/15 backdrop-blur-2xl rounded-3xl p-8 shadow-2xl border border-white/30 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-3xl">
+              <div className="bg-white/15 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/30 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-3xl">
                 {/* Tab Headers */}
-                <div className="flex space-x-4 mb-8">
+                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mb-6 sm:mb-8">
                   <button
                     onClick={() => setActiveTab('hourly')}
-                    className={`px-6 py-3 rounded-2xl font-bold text-lg transition-all duration-300 ${
+                    className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-lg transition-all duration-300 ${
                       activeTab === 'hourly'
                         ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
                         : 'bg-white/20 text-white/70 hover:bg-white/30 hover:text-white'
@@ -1059,7 +1059,7 @@ export default function App() {
                   </button>
                   <button
                     onClick={() => setActiveTab('daily')}
-                    className={`px-6 py-3 rounded-2xl font-bold text-lg transition-all duration-300 ${
+                    className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-lg transition-all duration-300 ${
                       activeTab === 'daily'
                         ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
                         : 'bg-white/20 text-white/70 hover:bg-white/30 hover:text-white'
@@ -1072,12 +1072,12 @@ export default function App() {
                 {/* Tab Content */}
                 {activeTab === 'hourly' && (
                 <div>
-                    <h3 className="text-3xl font-bold text-white mb-8">{tabT.hourlyForecast}</h3>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8">{tabT.hourlyForecast}</h3>
                 <div className="overflow-x-auto">
-                  <div className="flex space-x-4 min-w-max pb-4">
+                  <div className="flex space-x-2 sm:space-x-4 min-w-max pb-4">
                     {forecast.forecast.forecastday[0].hour.slice(0, 12).map((item, index) => (
-                      <div key={index} className="bg-white/15 rounded-2xl p-6 text-center min-w-[120px] hover:bg-white/25 transition-all duration-300 hover:scale-105">
-                        <div className="text-white/90 text-sm mb-3 font-semibold">
+                      <div key={index} className="bg-white/15 rounded-xl sm:rounded-2xl p-3 sm:p-6 text-center min-w-[90px] sm:min-w-[120px] hover:bg-white/25 transition-all duration-300 hover:scale-105">
+                        <div className="text-white/90 text-xs sm:text-sm mb-2 sm:mb-3 font-semibold">
                           {new Date(item.time).toLocaleTimeString(language === 'en' ? 'en-US' : language === 'tr' ? 'tr-TR' : language === 'az' ? 'az-AZ' : 'ru-RU', {
                             hour: '2-digit',
                             minute: '2-digit'
@@ -1086,12 +1086,12 @@ export default function App() {
                         <img
                           src={`https:${item.condition.icon}`}
                           alt={item.condition.text}
-                          className="w-16 h-16 mx-auto mb-4 drop-shadow-lg"
+                          className="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-4 drop-shadow-lg"
                         />
-                        <div className="text-white font-bold text-2xl mb-2">
+                        <div className="text-white font-bold text-lg sm:text-2xl mb-1 sm:mb-2">
                           {Math.round(item.temp_c)}°
                         </div>
-                        <div className="text-white/80 text-sm mb-1">
+                        <div className="text-white/80 text-xs sm:text-sm mb-1">
                           {Math.round(item.feelslike_c)}°
                         </div>
                         <div className="text-white/70 text-xs">
@@ -1107,29 +1107,29 @@ export default function App() {
                 {/* Daily Forecast Tab */}
                 {activeTab === 'daily' && (
                 <div>
-                    <h3 className="text-3xl font-bold text-white mb-8">{tabT.dailyForecast}</h3>
-                    <div className="space-y-4">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8">{tabT.dailyForecast}</h3>
+                    <div className="space-y-3 sm:space-y-4">
                       {forecast.forecast.forecastday.map((day, index) => (
-                        <div key={index} className="bg-white/15 rounded-2xl p-6 hover:bg-white/25 transition-all duration-300 hover:scale-105">
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center space-x-6">
-                              <div className="text-white/90 text-xl font-semibold min-w-[140px]">
+                        <div key={index} className="bg-white/15 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:bg-white/25 transition-all duration-300 hover:scale-105">
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
+                            <div className="flex items-center space-x-3 sm:space-x-6">
+                              <div className="text-white/90 text-lg sm:text-xl font-semibold min-w-[120px] sm:min-w-[140px]">
                                 {index === 0 ? t.today : getDayName(day.date)}
                               </div>
                               <img
                                 src={`https:${day.day.condition.icon}`}
                                 alt={day.day.condition.text}
-                                className="w-16 h-16 drop-shadow-lg"
+                                className="w-12 h-12 sm:w-16 sm:h-16 drop-shadow-lg"
                               />
-                              <div className="text-white/80 text-lg capitalize font-medium">
+                              <div className="text-white/80 text-sm sm:text-lg capitalize font-medium">
                                 {day.day.condition.text}
                               </div>
                             </div>
-                            <div className="flex items-center space-x-6">
-                              <div className="text-white text-2xl font-bold">
+                            <div className="flex items-center justify-between sm:justify-end space-x-4 sm:space-x-6">
+                              <div className="text-white text-xl sm:text-2xl font-bold">
                                 {Math.round(day.day.maxtemp_c)}°
                               </div>
-                              <div className="text-white/70 text-xl">
+                              <div className="text-white/70 text-lg sm:text-xl">
                                 {Math.round(day.day.mintemp_c)}°
                               </div>
                             </div>
@@ -1144,34 +1144,34 @@ export default function App() {
 
             {/* 5-Day Forecast - Keep for backward compatibility */}
             {forecast && (
-              <div className="bg-white/15 backdrop-blur-2xl rounded-3xl p-8 shadow-2xl border border-white/30 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-3xl">
-                <h3 className="text-3xl font-bold text-white mb-8">{t.fiveDayForecast}</h3>
-                <div className="space-y-4">
+              <div className="bg-white/15 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/30 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-3xl">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8">{t.fiveDayForecast}</h3>
+                <div className="space-y-3 sm:space-y-4">
                   {getDailyForecast(forecast).map((day, index) => (
-                    <div key={index} className="bg-white/15 rounded-2xl p-6 hover:bg-white/25 transition-all duration-300">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-6">
-                          <div className="text-white/90 text-xl font-semibold min-w-[140px]">
+                    <div key={index} className="bg-white/15 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:bg-white/25 transition-all duration-300">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
+                        <div className="flex items-center space-x-3 sm:space-x-6">
+                          <div className="text-white/90 text-lg sm:text-xl font-semibold min-w-[120px] sm:min-w-[140px]">
                             {index === 0 ? t.today : getDayName(day.date)}
                           </div>
                           <img
                             src={`https:${day.weather.icon}`}
                             alt={day.weather.text}
-                            className="w-16 h-16 drop-shadow-lg"
+                            className="w-12 h-12 sm:w-16 sm:h-16 drop-shadow-lg"
                           />
-                          <div className="text-white/80 text-lg capitalize font-medium">
+                          <div className="text-white/80 text-sm sm:text-lg capitalize font-medium">
                             {day.weather.text}
                           </div>
                         </div>
-                        <div className="flex items-center space-x-8">
-                          <div className="text-white/70 text-lg">
+                        <div className="flex items-center justify-between sm:justify-end space-x-4 sm:space-x-8">
+                          <div className="text-white/70 text-sm sm:text-lg">
                             {Math.round(day.avgTemp)}°
                           </div>
-                          <div className="flex items-center space-x-3">
-                            <span className="text-white font-bold text-2xl">
+                          <div className="flex items-center space-x-2 sm:space-x-3">
+                            <span className="text-white font-bold text-xl sm:text-2xl">
                               {day.maxTemp}°
                             </span>
-                            <span className="text-white/70 text-2xl">
+                            <span className="text-white/70 text-lg sm:text-2xl">
                               {day.minTemp}°
                             </span>
                           </div>
@@ -1184,49 +1184,49 @@ export default function App() {
             )}
 
             {/* Additional Details */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white/15 backdrop-blur-2xl rounded-3xl p-8 shadow-2xl border border-white/30 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-3xl">
-                <h3 className="text-2xl font-bold text-white mb-6">{t.sunMoon}</h3>
-                <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
+              <div className="bg-white/15 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/30 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-3xl">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">{t.sunMoon}</h3>
+                <div className="space-y-4 sm:space-y-6">
                   <div className="flex justify-between items-center">
-                    <span className="text-white/80 text-lg">{t.sunrise}</span>
-                    <span className="text-white font-bold text-xl">
+                    <span className="text-white/80 text-sm sm:text-lg">{t.sunrise}</span>
+                    <span className="text-white font-bold text-lg sm:text-xl">
                       06:30
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-white/80 text-lg">{t.sunset}</span>
-                    <span className="text-white font-bold text-xl">
+                    <span className="text-white/80 text-sm sm:text-lg">{t.sunset}</span>
+                    <span className="text-white font-bold text-lg sm:text-xl">
                       18:30
                     </span>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/15 backdrop-blur-2xl rounded-3xl p-8 shadow-2xl border border-white/30 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-3xl">
-                <h3 className="text-2xl font-bold text-white mb-6">{t.wind}</h3>
-                <div className="space-y-6">
+              <div className="bg-white/15 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/30 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-3xl">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">{t.wind}</h3>
+                <div className="space-y-4 sm:space-y-6">
                   <div className="flex justify-between items-center">
-                    <span className="text-white/80 text-lg">{t.speed}</span>
-                    <span className="text-white font-bold text-xl">{weather.current.wind_kph} km/h</span>
+                    <span className="text-white/80 text-sm sm:text-lg">{t.speed}</span>
+                    <span className="text-white font-bold text-lg sm:text-xl">{weather.current.wind_kph} km/h</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-white/80 text-lg">{t.direction}</span>
-                    <span className="text-white font-bold text-xl">{weather.current.wind_degree}°</span>
+                    <span className="text-white/80 text-sm sm:text-lg">{t.direction}</span>
+                    <span className="text-white font-bold text-lg sm:text-xl">{weather.current.wind_degree}°</span>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/15 backdrop-blur-2xl rounded-3xl p-8 shadow-2xl border border-white/30 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-3xl">
-                <h3 className="text-2xl font-bold text-white mb-6">{t.visibility}</h3>
-                <div className="space-y-6">
+              <div className="bg-white/15 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/30 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-3xl">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">{t.visibility}</h3>
+                <div className="space-y-4 sm:space-y-6">
                   <div className="flex justify-between items-center">
-                    <span className="text-white/80 text-lg">{t.distance}</span>
-                    <span className="text-white font-bold text-xl">{weather.current.vis_km} km</span>
+                    <span className="text-white/80 text-sm sm:text-lg">{t.distance}</span>
+                    <span className="text-white font-bold text-lg sm:text-xl">{weather.current.vis_km} km</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-white/80 text-lg">{t.uvIndex}</span>
-                    <span className="text-white font-bold text-xl">{weather.current.uv}</span>
+                    <span className="text-white/80 text-sm sm:text-lg">{t.uvIndex}</span>
+                    <span className="text-white font-bold text-lg sm:text-xl">{weather.current.uv}</span>
                   </div>
                 </div>
               </div>
@@ -1236,13 +1236,13 @@ export default function App() {
 
         {/* Welcome Message */}
         {!weather && !loading && !error && (
-          <div className="text-center py-20">
-            <div className="bg-white/20 backdrop-blur-2xl rounded-3xl p-16 shadow-2xl border border-white/30 max-w-3xl mx-auto hover:bg-white/25 transition-all duration-500 hover:scale-105 hover:shadow-3xl">
-              <div className="text-9xl mb-8">🌤️</div>
-              <h2 className="text-5xl font-bold text-white mb-6">
+          <div className="text-center py-12 sm:py-20">
+            <div className="bg-white/20 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-8 sm:p-16 shadow-2xl border border-white/30 max-w-3xl mx-auto hover:bg-white/25 transition-all duration-500 hover:scale-105 hover:shadow-3xl">
+              <div className="text-6xl sm:text-9xl mb-6 sm:mb-8">🌤️</div>
+              <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4 sm:mb-6">
                 {t.discoverWeather}
               </h2>
-              <p className="text-white/90 text-2xl mb-10 font-medium">
+              <p className="text-white/90 text-lg sm:text-2xl mb-8 sm:mb-10 font-medium">
                 {t.welcomeMessage}
               </p>
               <div className="max-w-md mx-auto relative z-[100]">
